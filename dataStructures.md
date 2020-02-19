@@ -109,3 +109,76 @@ Worst case scencario is possible at this point, that all keys is hashed to the s
 
 So thats why current hashing function aim to prevent this from ever happening .
 
+## Stack and Queues
+
+STACK LIFO
+QUEUE FIFO
+
+Support constant time insertion and deletion of elements
+
+Stack is bascially a dynamic array
+Queue is tipically implemented with a linked list
+
+
+## Strings 
+
+strings are typically stored in memory as an array of integers, ASCII encoding standard maps letters to integers, for example A => 65. 
+
+traverse O(n), o(1) S
+copy O(N) ST
+get O(1) ST
+
+some languages like C++, strings are mutable
+most other languages, strings are immutable
+
+Joinning strings is expensive because you have to allocate O(n) + O(M) Memory slots, and remove the origin array. 
+
+So to Join strings,  operation would be O(N + M) ST
+when dealing with lots of string mutations, would be much better to split up the string into array so mutations would only be O(1). 
+
+O(N + M) to change into array of letters
+O(1) for each operation
+O(n + M ) to change back
+ 
+VS
+
+O(N + M) for each operation
+
+
+## Graphs
+Graph is a connection of nodes that may or may not be connected to one another. 
+
+Nodes are called verticies
+
+Connections/arrows are called edges
+
+What are the key concepts that appear to be glaring when I look at a graph?
+
+Graph is connected if u can access any code
+
+directed graph and undirected graph
+directed graph -  connections are arrows
+undirected graph - connections are lines
+
+directed graph - flight paths
+undirected graph - social network graph, mutual connection
+
+cyclic graph - if it has cycles, when there are 3 + nodes and it cycles back other time to the beginning, 
+
+Traversal O(V + E)
+
+## Trees
+Tree is a type of graph, directed and acyclic 
+balanced if left and right sides are roughly equal | or O(log N ) if traversed
+
+Storing O(N) 
+Traversing O(N) depends,  O(log N) if balanced binary tree   
+
+
+bottom node = leaf
+
+complete tree - every level is filled, except last, filled left to right
+
+full tree - every node has either no children or K children(binary, 2 children)
+
+perfect tree - all leaf nodes are full, completly filled up. 
