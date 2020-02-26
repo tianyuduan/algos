@@ -258,16 +258,35 @@ function mostFrequentNumber(arr) {
         hash[arr[i]] += 1
     }
 
-        //key
-    let mostFrequent = Object.keys(hash).reduce((a, b) => hash[a] > hash[b] ? a : b);
-
+        // reduce only works on arrays, so you need to call Object.value or Keys to turn them into array form.
+    // let mostFrequent = Object.keys(hash).reduce((a, b) => hash[a] > hash[b] ? a : b)
+//     console.log(hash);
     
-    return mostFrequent
+  const mostFrequentArrayKeys = Object.keys(hash);
+
+// //   for (let i = 0; i < mostFrequentArrayKeys.length; i++) {
+// //       let biggest; 
+      
+
+// //   }
+//     let biggest;
+//   let mostFrequent = mostFrequentArrayKeys.reduce((a, b) => {
+//       console.log(a + ' im A');
+//       console.log(b + ' im B');
+    
+//      hash[a] > hash[b] ? biggest = a : b
+//      return b
+//     }
+//   )
+
+//     console.log(biggest);
+    
+    // return mostFrequent
     
     
 }
 
-mostFrequentNumber([12, 3, 1, 2, -6, 5, -8, 9, 2, 1, 6])
+mostFrequentNumber([12, 3, 1, 2, -6, 5, -8, 2, 9, 2, 1, 6])
 
 
 //findThree largest numbers 
