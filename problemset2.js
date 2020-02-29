@@ -116,6 +116,184 @@ function isPalindrome(string) {
 
   function moveElementToEnd(array, toMove) {
     // Write your code here.
+    let pointerEndIndex = array.length - 1 ;
+
+    // we want two pointers at the beginning and end, we want to swap indexes when match is found.
+    // iterate towards the end of the array , I think you only need to go half
+    // we have a forward and reserverse traversal, simultaenously O(2N) -> N
+
+    for( let i = 0; i < array.length ; i++){
+        pointerEndIndex = array.length - 1 
+        while (pointerEndIndex !== 0) {
+        // if match + last pointer is not match
+            if (toMove === array[i] && array[pointerEndIndex] !== toMove) {
+                //swap 
+                let temp = array[pointerEndIndex];
+                array[pointerEndIndex] = array[i];
+                array[i] = temp;
+            }
+            pointerEndIndex--;
+      }
+    }   
+    return array;
   }
+  // use while loops with i < j as parameter
+  moveElementToEnd( [2, 1, 2, 2, 9, 9, 2, 3, 4, 2], 2);
+
+  function moveElementToEndWhile(array, toMove) {
+    let i = 0;
+    let j = array.length - 1;
+
+    while ( i < j ) {
+      // checks first, and last element
+      while (array[i] === toMove) {
+        if (array[j] !== toMove) {
+          let temp = array[j];
+          array[j] = array[i];
+          array[i] = temp;
+        }
+        j--;
+      }
+    i++;
+  }
+  return array;
+}
+
+// O(n) space and O(1) time with two pointers
+  moveElementToEndWhile( [2, 1, 2, 2, 9, 9, 2, 3, 4, 2], 2);
+
+  // Write a function that takes in an array of strings and returns a list of groups of anagrams.
+  //  Anagrams are strings made up of exactly the same letters, where order doesn't matter. For example,
+  //   "cinema" and "iceman" are anagrams; similarly, "foo" and "ofo" are anagrams. Note that the groups of
+  //    anagrams don't need to be ordered in any particular way.
+
+  // Sample input: ["yo", "act", "flop", "tac", "cat", "oy", "olfp"]
+  // "flop", "olfp"
+  // 'yo, 'oy'
+
+  function groupAnagrams(words) {
+    // Write your code here.
+    // hashtables are the thing that comes to my mind
+    // store each number with its own individual object/hashtable
+    // ahastable will contain the letters with the index
+    // I Iterate once to store
+    // then iterate again to compare and push into similar arrays togethor 
+
+
+  }
+
+  // Write a function that takes in two non-empty arrays of integers. The function should find the pair of numbers 
+  // (one from the first array, one from the second array) whose absolute difference is closest to zero. 
+  // The function should return an array containing these two numbers, with the number from the first array 
+  // in the first position. Assume that there will only be one pair of numbers with the smallest difference.
+
+  // Sample input: [-1, 5, 10, 20, 28, 3], [26, 134, 135, 15, 17]
+  // Sample output: [28, 26]
   
-  // Do not edit the line below.
+  function smallestDifference(arrayOne, arrayTwo) {
+    // Write your code here.
+    //javascript v8 sort, quick sort, mozilla uses merge sort On average O(n log N) T, O(N) S  + O(n log M) T, O(M) S
+    let sortedArrayOne = arrayOne.sort((a,b) => a - b);
+    let sortedArrayTWo = arrayTwo.sort((a,b) => a - b);
+    let pointerOne = 0;
+    let pointerTwo = 0;
+    let smallestDifference = Infinity;
+    let differenceStore = []
+
+    // as long as the pointers dont reach the end, keep going 
+
+    //  O(N * M)
+    while ( pointerOne < sortedArrayOne.length ) {
+      while (pointerTwo < sortedArrayTWo.length ) {
+        let curentDifference = Math.abs(sortedArrayTWo[pointerTwo] - sortedArrayOne[pointerOne]);
+        if (smallestDifference > curentDifference ) {
+          smallestDifference = curentDifference;
+          differenceStore = [sortedArrayTWo[pointerTwo], sortedArrayOne[pointerOne]];
+        }
+        pointerTwo++;
+      }
+      pointerOne++;
+      pointerTwo = 0;
+    }
+    return differenceStore
+  }
+
+  // O (N * M) Time Complexity 
+  // O ( N + M ) Space Complexity
+
+  smallestDifference([-1, 5, 10, 20, 28, 3], [26, 134, 135, 15, 17])
+  
+
+  // sort the two arrays 
+  // use a pointer at each end and go down the list, if smaller/bigger move pointer
+  // selectively pick numbers by using comparisons
+
+
+
+  // Write a function that, given a string, returns its longest palindromic substring.
+  // A palindrome is defined as a string that is written the same forward and backward. 
+  // Assume that there will only be one longest palindromic substring.
+
+  // Sample input: "abaxyzzyxf"
+  // Sample output: "xyzzyx"
+
+  function longestPalindromicSubstring(string) {
+    //edge case
+    if (string.length === 1 || string.length === 2) return string[0]
+    let maxPalindrome = ''
+    // Write your code here.
+    for ( let i = 0; i < string.length; i++){
+      let potentialPalindrome = palindromeicSpreadChecker(string, i);
+      if (potentialPalindrome.length > maxPalindrome.length) { maxPalindrome = potentialPalindrome };
+    }
+    console.log(maxPalindrome);
+    return maxPalindrome
+  }
+
+  function palindromeicSpreadChecker(string, index) {
+    let pointerLeft = index - 1;
+    let pointerRight = index + 1;
+    let palindrome = true;
+    let potentialPalindrome = string[index];
+    let actualPaldindrome = string[index];
+
+    let potentialPalindromeOdd = string[index];
+       // while odd 
+       
+       while (isPalindrome(potentialPalindromeOdd)) {
+        actualPaldindrome = potentialPalindrome;
+        potentialPalindromeOdd = string[pointerLeft] + potentialPalindrome + string[pointerRight];
+        
+       }
+
+  return actualPaldindrome;
+
+
+    //    //check
+    //   while (isPalindrome(potentialPalindromeOdd)) {
+    //     // valid from previous check
+    //     // set entry + set longest
+    //     // potentialPalindromeOdd.length > actualPaldindrome.length ? actualPaldindrome = potentialPalindromeOdd: null 
+    //     actualPaldindrome = potentialPalindromeOdd
+    
+    //     //expand check
+    //     potentialPalindromeOdd = string[pointerLeft] + potentialPalindrome + string[pointerRight];
+        
+    //     //increment
+    //     pointerLeft--;
+    //     pointerRight++;
+    //   } 
+
+    //   // // while even is true
+    //   // while (isPalindrome(potentialPalindromeEven)) {
+    //   //   actualPaldindrome = potentialPalindrome;
+    //   //   pointerLeft--;
+    //   //   pointerRight++;
+    //   // }       
+
+    // return actualPaldindrome
+  }
+
+  longestPalindromicSubstring("cabacxyzzyxf");
+  //traverse teh string
+
