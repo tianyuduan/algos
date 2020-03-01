@@ -44,7 +44,7 @@ function binarySearch(array, target) {
   // recalculate middle pounter
   // restart
   // until left and right pointer point at value 
-  // if left pointer is bigger than right pointer or vice versa, the value is not found
+  // if left pointer is bigger than right pointer or vice versa, the value is not found 
 
 
 //   Write a function that takes in two strings and returns the minimum number of edit operations that need to be performed on the first string to obtain the second string. 

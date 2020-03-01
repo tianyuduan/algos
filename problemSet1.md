@@ -34,5 +34,30 @@ at the end, we return the Sorted Array.
 // Stock_prices = [10, 7, 5, 8, 11, 9]
 // return 6
 
-keep track of the lowest price we’ve seen so far
+
+we instantiate lowest price and profit 
+
 see if we can get a better profit
+keep track of the lowest price we’ve seen so far
+
+and we can traverse thru the array, doing each comparison
+
+## threeNumberSum
+
+sort the array, and solve the problem using its sorted properties
+
+we want to use pointers at each end, to go thru each slot and only stop when L > R pointer, 
+
+increment traveral 
+
+O(n ^ 2) Time
+Space O(N) worst case, if all triplets
+
+Example array[0] , array[1] Left pointer, Array[arr.length -1 ] Right pointer
+
+Remember that once match is find, that traversal is not over, increment pointers on both sides
+
+
+
+
+

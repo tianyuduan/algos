@@ -12,7 +12,6 @@ let stock_prices_2 = [8, 50, 10, 7, 2, 8, 11, 2];
 // REVIEW
 // Understand the problem better
 function get_max_profit(stock_prices) {
-
     // update min price at always 
     // see if maxProfit goes up and down
 
@@ -28,7 +27,7 @@ function get_max_profit(stock_prices) {
         let potentialProfit = stock_prices[i] - minPrice;
 
         maxProfit = Math.max(maxProfit, potentialProfit);
-        minPrice = Math.min(minPrice, currentPrice);
+        minPrice = Math.min(minPrice, currentPrice); 
     }
     
     return maxProfit
@@ -128,15 +127,26 @@ function threeNumberSum(array, targetSum) {
     // start with sorting the array
     // O(N Log N) T  O(N) S
     let sortedArray = array.sort((a,b) => a - b);
-    
+    let threeSumArray = []
 
     // pointers at end / beginning 
-    for (let i = 0; i < array.length; i++) {
-        
-        
+    for (let i = 0; i < sortedArray.length; i++) {
+        let pointerLeft = i + 1;
+        let pointerRight = sortedArray.length - 1;
+        while (pointerLeft < pointerRight) {
+            let potentialSum = sortedArray[pointerLeft] + sortedArray[pointerRight] + sortedArray[i];
+            if (potentialSum === targetSum) {
+                threeSumArray.push([sortedArray[i], sortedArray[pointerLeft], sortedArray[pointerRight]]);
+                pointerLeft++;
+                pointerRight--;
+            } else if (potentialSum < targetSum) {
+                pointerLeft++;
+            } else if (potentialSum > targetSum) {
+                pointerRight--;
+            }
+        }
     }
-
-  
+    return threeSumArray
   }
 
   threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0);
