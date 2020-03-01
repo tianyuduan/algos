@@ -46,12 +46,18 @@ function binarySearch(array, target) {
   // until left and right pointer point at value 
   // if left pointer is bigger than right pointer or vice versa, the value is not found
 
+
 //   Write a function that takes in two strings and returns the minimum number of edit operations that need to be performed on the first string to obtain the second string. 
 //   There are three edit operations: insertion of a character, deletion of a character, and substitution of a character for another.
-  // abc, yabd input
+//   abc, yabd input
 //   output 2
 
 function levenshteinDistance(str1, str2) {
     // Write your code here.
   }
   
+  // initially compare the two strings, check for matches, super impose string 
+
+  // check for number of alphabet matches 
+  // abcdef
+  // fedcba
