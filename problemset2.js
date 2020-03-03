@@ -68,16 +68,66 @@ class Node {
   
     depthFirstSearch(array) {
       // Write your code here.
-      array.push(this.name)
-      for( child in this.children) {
+      array.push(this.name);
+      // itereats thru the object 
+      for (child of this.children) {
           child.depthFirstSearch(array)
       }
-      return array; 
+      return array;
     }
   }
 
 //   Write a function that takes in a non-empty string and that returns a boolean representing whether 
 //   or not the string is a palindrome. A palindrome is defined as a string that is written the same forward and backward.
+
+// for every node, add that node to final array, for every child node , call dept first search function //stack!
+
+// O(V + E) O(V)
+
+
+
+// You are given a Node class that has a name and an array of optional children Nodes. When put together, Nodes form a simple tree-like structure. Implement the breadthFirstSearch method on the Node class, 
+// which takes in an empty array,
+//  traverses the tree using the Breadth-first Search approach (specifically navigating the tree from left to right), stores all of the Nodes' names in the input array, and returns it.
+
+
+class Node {
+  constructor(name) {
+    this.name = name;
+    this.children = [];
+  }
+
+  addChild(name) {
+    this.children.push(new Node(name));
+    return this;
+  }
+
+  breadthFirstSearch(array) {
+    // Write your code here.
+    let queue = [this.Node];
+ 
+    while (!(queue.length === 0)) {
+      let currentNode = queue.shift();
+      array.push(currentNode.name);
+      for (child of currentNode.children) {
+        queue.push(child);
+      }
+    }
+    return array;
+  }
+}
+
+// instantiate a queue and a current Node, push every node of that level intot eh queue, and then you pop the queue after you push every child node of the popped node into the queue, you can push the node into the return array
+
+// add a node to the queue
+// pop node from from of queue
+// add all tis children nodes
+// add its name to final array
+// return array
+
+// O(v + e) T 
+// O(V) S
+
 
 // Sample input: "abcdcba"
 // true false
