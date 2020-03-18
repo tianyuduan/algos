@@ -11,26 +11,24 @@
 function binarySearch(array, target) {
     // Write your code here.
     // start point
-   const index =  SearchHelper(array, target)
-   return index;
+    const found = SearchHelper(array, target);
+    console.log(found);
+    
   } 
 
   function SearchHelper(array, target) {
-    let pointerLeft = 0;
-    let pointerRight = array.length - 1;
-    let middlePointer;
+    let left= 0;
+    let right = array.length - 1;
+    let middle = Math.floor(left + right / 2);
 
-    while (pointerLeft <= pointerRight) {
-        middlePointer = Math.floor((pointerLeft + pointerRight) / 2 );   
-        if (target === array[middlePointer]) return middlePointer
-        if (target > array[middlePointer]) {
-            // search right
-            pointerLeft = middlePointer + 1;
-        }
-        if (target < array[middlePointer]) {
-            pointerRight = middlePointer - 1;
-            // search left
-        }
+    while ( left <= right ) {
+      if (array[middle] === target) {
+        return middle
+      }  else if ( array[middle] > target) {
+        right = middle - 1;
+      } else if ( array[middle] < target ) {
+        left = middle + 1; 
+      }
     }
     return -1;
   }
@@ -57,7 +55,6 @@ function levenshteinDistance(str1, str2) {
   }
   
   // initially compare the two strings, check for matches, super impose string 
-
   // check for number of alphabet matches 
   // abcdef
   // fedcba
@@ -69,29 +66,16 @@ function levenshteinDistance(str1, str2) {
   // or None (null) values. You are also given a target integer value; write a function that finds the closest value to that target value contained in the BST. Assume that there will only be one closest value.
   function findClosestValueInBst(tree, target) {
     // Write your code here.
-    bstHelper(tree, target, Infinity)
   }
   
   function findClosestValueInBst(tree, target) {
     // Write your code here.
-    return bstHelper(tree, target, Infinity)
   }
   
    function bstHelper(tree, target, lowestRecorded) {
-      // as long as it doesnt hit the end of leaf
-     let currentNode = tree;
-      while (currentNode !== null ) {
-        if (Math.abs(currentNode.value - target) < Math.abs(target - lowestRecorded)) {
-          // store lowestRecorded if the current node has a smaller difference then lowestRecorded 
-          lowestRecorded = currentNode.value;
-        }
-        if (currentNode.value > target) {
-          currentNode = currentNode.left
-        } else if (currentNode.value < target) {
-           currentNode = currentNode.right
-        } else {
-          break;
-        }
-        }
-        return lowestRecorded;
-    }
+    // as long as it doesnt hit the end of leaf
+    
+  }
+
+
+    // Do 
